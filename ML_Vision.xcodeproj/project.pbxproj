@@ -19,6 +19,8 @@
 		06C8011220CE15560036F770 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C8011120CE15560036F770 /* CoreML.framework */; };
 		06C8011420CE15680036F770 /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C8011320CE15680036F770 /* Vision.framework */; };
 		06C8011620CE15AD0036F770 /* DL.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 06C8011520CE15AD0036F770 /* DL.mlmodel */; };
+		06C8011820CEE2280036F770 /* DL1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 06C8011720CEE2280036F770 /* DL1.mlmodel */; };
+		06C8011A20CEF9CF0036F770 /* DL2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 06C8011920CEF9CF0036F770 /* DL2.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		06C8011120CE15560036F770 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		06C8011320CE15680036F770 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
 		06C8011520CE15AD0036F770 /* DL.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DL.mlmodel; sourceTree = "<group>"; };
+		06C8011720CEE2280036F770 /* DL1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DL1.mlmodel; sourceTree = "<group>"; };
+		06C8011920CEF9CF0036F770 /* DL2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DL2.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 				064FD88020CA6FDB006C2A89 /* CameraView.swift */,
 				064A251420C9F447004B6DEE /* FrameExtractor.swift */,
 				064A250620C9F3B7004B6DEE /* Main.storyboard */,
+				06C8011720CEE2280036F770 /* DL1.mlmodel */,
+				06C8011920CEF9CF0036F770 /* DL2.mlmodel */,
 				06C8011520CE15AD0036F770 /* DL.mlmodel */,
 				064A250920C9F3B8004B6DEE /* Assets.xcassets */,
 				064A250B20C9F3B8004B6DEE /* LaunchScreen.storyboard */,
@@ -167,9 +173,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				064A251520C9F447004B6DEE /* FrameExtractor.swift in Sources */,
+				06C8011A20CEF9CF0036F770 /* DL2.mlmodel in Sources */,
 				06C8011620CE15AD0036F770 /* DL.mlmodel in Sources */,
 				064A250520C9F3B7004B6DEE /* ViewController.swift in Sources */,
 				064FD88320CA7777006C2A89 /* ImageProcessor.swift in Sources */,
+				06C8011820CEE2280036F770 /* DL1.mlmodel in Sources */,
 				064A250320C9F3B7004B6DEE /* AppDelegate.swift in Sources */,
 				06B8486120CE013200050412 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
 				064FD88120CA6FDB006C2A89 /* CameraView.swift in Sources */,

@@ -41,7 +41,7 @@ class ImageProcessorType1: ImageProcessor {
              To use a different Core ML classifier model, add it to the project
              and replace `MobileNet` with that model's generated Swift class.
              */
-            let model = try VNCoreMLModel(for: DL().model)
+            let model = try VNCoreMLModel(for: DL2().model)
             
             let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
                 self?.processClassifications(for: request, error: error)
@@ -96,7 +96,7 @@ class ImageProcessorType1: ImageProcessor {
                     return a.confidence < b.confidence
                 })
                 if let resultClassification = probableClassification {
-                    let result = ImageProcessorResult(info: "\(resultClassification.identifier) (\(resultClassification.confidence)")
+                    let result = ImageProcessorResult(info: "\(resultClassification.identifier) (\(resultClassification.confidence))")
                     self.resultDelegate?.imageProcessorResult(imageProcessor: self, result: result)
                 } else {
                     let result = ImageProcessorResult(info: "Cannot classify")
@@ -106,9 +106,7 @@ class ImageProcessorType1: ImageProcessor {
             }
             self.stillProcessing = false
         }
-    }
-    
-    
+    }    
 }
 
 struct ImageProcessorResult {

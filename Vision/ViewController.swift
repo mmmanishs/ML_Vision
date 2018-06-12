@@ -23,10 +23,14 @@ class ViewController: UIViewController, ImageProcessorResultDelegate {
             self.cameraView.start()
         }
     }
-
-//    override var shouldAutorotate: Bool {
-//        return true
-//    }
+    
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .landscapeRight
+    }
     
     func imageProcessorResult(imageProcessor: ImageProcessor, result: ImageProcessorResult) {
         DispatchQueue.main.async {

@@ -68,6 +68,7 @@ class FrameExtractor: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         connection.videoOrientation = .landscapeRight
 //        connection.isVideoMirrored = position == .back
     }
+
     
     private func selectCaptureDevice() -> AVCaptureDevice? {
         return AVCaptureDevice.devices().filter {

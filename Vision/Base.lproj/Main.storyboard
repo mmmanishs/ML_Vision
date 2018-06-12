@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,28 +18,27 @@
                         <viewControllerLayoutGuide type="bottom" id="4aW-MI-hu7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ant-hf-KBj" customClass="CameraView" customModule="ML_Vision" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOw-xG-PLB">
-                                        <rect key="frame" x="0.0" y="608" width="375" height="59"/>
+                                        <rect key="frame" x="0.0" y="316" width="667" height="59"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0F-33-iTI">
-                                                <rect key="frame" x="20" y="18" width="31.5" height="21"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <rect key="frame" x="20" y="11.5" width="55" height="36"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="Z0F-33-iTI" firstAttribute="top" secondItem="hOw-xG-PLB" secondAttribute="top" constant="18" id="7a8-lN-4dk"/>
                                             <constraint firstItem="Z0F-33-iTI" firstAttribute="leading" secondItem="hOw-xG-PLB" secondAttribute="leading" constant="20" id="Isj-oX-zdw"/>
+                                            <constraint firstItem="Z0F-33-iTI" firstAttribute="centerY" secondItem="hOw-xG-PLB" secondAttribute="centerY" id="Upi-aC-ufl"/>
                                             <constraint firstAttribute="height" constant="59" id="eO1-LL-wiW"/>
-                                            <constraint firstAttribute="bottom" secondItem="Z0F-33-iTI" secondAttribute="bottom" constant="20" id="y9a-Nd-lWj"/>
                                         </constraints>
                                     </view>
                                 </subviews>

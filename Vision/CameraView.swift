@@ -23,6 +23,16 @@ class CameraView: UIView, FrameExtractorDelegate {
             previewLayer.session = frameExtractor.captureSession
         }
     }
+    override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
+        // Resize the debug layer if it exists
+        guard let previewLayer = previewLayer, previewLayer.connection != nil else { return }
+        // Make sure that the capture layer's orientation matches the phone's
+        if layer is AVCaptureVideoPreviewLayer {
+            previewLayer.connection?.videoOrientation = .landscapeRight
+        }
+    }
+    
     override class var layerClass: AnyClass {
         return AVCaptureVideoPreviewLayer.self
     }
