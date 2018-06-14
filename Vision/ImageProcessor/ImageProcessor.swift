@@ -23,6 +23,7 @@ protocol ImageProcessorResultDelegate: class {
 class ImageProcessorType1: ImageProcessor {
     weak var resultDelegate: ImageProcessorResultDelegate?
     var stillProcessing = false
+    
     func feedLinker(image: UIImage) {
         // Here detect that the feed is stable
         // if stable then process model
@@ -69,12 +70,12 @@ class ImageProcessorType1: ImageProcessor {
                  to processing that request.
                  */
                 print("Failed to perform classification.\n\(error.localizedDescription)")
-                let result = ImageProcessorResult(info: "Failed to classify")
+                let result = ImageProcessorResult(info: "Engine flameout. Restart app.")
                 self.resultDelegate?.imageProcessorResult(imageProcessor: self, result: result)
             }
         }
     }
-    
+
     /// Updates the UI with the results of the classification.
     /// - Tag: ProcessClassifications
     func processClassifications(for request: VNRequest, error: Error?) {

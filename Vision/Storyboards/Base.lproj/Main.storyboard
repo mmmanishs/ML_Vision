@@ -41,11 +41,21 @@
                                             <constraint firstAttribute="height" constant="59" id="eO1-LL-wiW"/>
                                         </constraints>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OgH-pJ-TP7">
+                                        <rect key="frame" x="419" y="19" width="240" height="128"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="cr4-R7-cPe"/>
+                                            <constraint firstAttribute="width" constant="240" id="mSU-Md-qjg"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="hOw-xG-PLB" secondAttribute="bottom" id="9nb-5s-fWE"/>
                                     <constraint firstAttribute="trailing" secondItem="hOw-xG-PLB" secondAttribute="trailing" id="P2h-r7-bx6"/>
+                                    <constraint firstAttribute="trailing" secondItem="OgH-pJ-TP7" secondAttribute="trailing" constant="8" id="PwE-wC-of8"/>
+                                    <constraint firstItem="OgH-pJ-TP7" firstAttribute="top" secondItem="ant-hf-KBj" secondAttribute="top" constant="19" id="hAC-9R-iEl"/>
                                     <constraint firstItem="hOw-xG-PLB" firstAttribute="leading" secondItem="ant-hf-KBj" secondAttribute="leading" id="hds-IA-oSs"/>
                                 </constraints>
                             </view>
@@ -61,6 +71,7 @@
                     <connections>
                         <outlet property="cameraView" destination="ant-hf-KBj" id="kfL-Ge-XBp"/>
                         <outlet property="infoLabel" destination="Z0F-33-iTI" id="wHh-VX-jtl"/>
+                        <outlet property="outputImageView" destination="OgH-pJ-TP7" id="BHQ-QN-Tm5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
