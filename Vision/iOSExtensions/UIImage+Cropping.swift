@@ -24,4 +24,23 @@ extension UIImage {
         }
         return nil
     }
+    
+    func resizeToMaxDimension(_ maxDimension: CGFloat) -> UIImage {
+        let oldHeight = size.height
+        let oldWidth = size.width
+        
+        let scaleFactor = (oldWidth > oldHeight) ? maxDimension / oldWidth : maxDimension / oldHeight
+        
+        return rescaleImage(scaleFactor)
+    }
+    
+    /// - Remark: Ex. scale at 300dpi for normal res 72dpi => 300.0/72.0
+    func rescaleImage(_ scale: CGFloat) -> UIImage {
+        let newSize = size.applying(CGAffineTransform(scaleX: scale, y: scale))
+        UIGraphicsBeginImageContextWithOptions(newSize, true, 0)
+        draw(in: CGRect(origin: CGPoint.zero, size: newSize))
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return scaledImage ?? self
+    }
 }

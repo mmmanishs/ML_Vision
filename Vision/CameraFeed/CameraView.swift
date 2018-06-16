@@ -10,13 +10,24 @@ import UIKit
 import AVFoundation
 
 protocol CameraDelegate: class {
-    func outputImage(image: UIImage, guideRect: CGRect)
+    func videoFrameFeed(videoStreamFrame: VideoStreamFrame, guideRect: CGRect, cameraView: CameraView)
 }
 
+struct VideoStreamFrame {
+    let image: UIImage
+    let rect: CGRect
+    let previewLayer: AVCaptureVideoPreviewLayer?
+}
+
+enum CameraViewState {
+    case scanning
+    case detected
+    case warning
+}
 class CameraView: UIView, FrameExtractorDelegate {
     var frameExtractor: FrameExtractor!
-    var imageProcessor: ImageProcessor?
-    weak var delegate: CameraDelegate?
+    weak var videoFeedDelegate: CameraDelegate?
+    let guideView = CameraGuideView()
     
     var guideRect: CGRect {
         let aspectRatio: CGFloat = 1.5859
@@ -28,7 +39,7 @@ class CameraView: UIView, FrameExtractorDelegate {
     }
     
     var previewLayer: AVCaptureVideoPreviewLayer? {
-        return layer as? AVCaptureVideoPreviewLayer
+            return layer as? AVCaptureVideoPreviewLayer
     }
     
     func start() {
@@ -44,7 +55,6 @@ class CameraView: UIView, FrameExtractorDelegate {
     }
     
     func addGuideView() {
-        let guideView = CameraGuideView()
         guideView.frame = guideRect
         addSubview(guideView)
         bringSubviewToFront(guideView)
@@ -69,7 +79,23 @@ class CameraView: UIView, FrameExtractorDelegate {
     }
     
     func captured(image: UIImage) {
-        imageProcessor?.feedLinker(image: image)
-        delegate?.outputImage(image: image, guideRect: guideRect)
+            let videoStreamFrame = VideoStreamFrame(image: image, rect: self.guideRect, previewLayer: self.previewLayer)
+        DispatchQueue.global().async {
+            self.videoFeedDelegate?.videoFrameFeed(videoStreamFrame: videoStreamFrame, guideRect: self.guideRect, cameraView: self)
+        }
+        
+    }
+    
+    func update(forState state: CameraViewState) {
+        DispatchQueue.main.async {
+            switch state {
+            case .scanning:
+                self.guideView.layer.borderColor = UIColor.black.cgColor
+            case .detected:
+                self.guideView.layer.borderColor = UIColor.green.cgColor
+            case .warning:
+                self.guideView.layer.borderColor = UIColor.red.cgColor
+            }
+        }
     }
 }

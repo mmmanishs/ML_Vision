@@ -13,7 +13,6 @@ class CameraGuideView: UIView {
         super.layoutSubviews()
         layer.cornerRadius = 13
         layer.borderWidth = 5
-        layer.borderColor = UIColor.orange.cgColor
         backgroundColor = UIColor.clear
     }
 }

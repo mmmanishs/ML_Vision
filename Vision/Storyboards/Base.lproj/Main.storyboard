@@ -33,21 +33,26 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2N-75-ZFu">
+                                                <rect key="frame" x="145" y="11" width="55" height="36"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="M2N-75-ZFu" firstAttribute="top" secondItem="hOw-xG-PLB" secondAttribute="top" constant="11" id="05h-wU-ZbP"/>
+                                            <constraint firstAttribute="bottom" secondItem="M2N-75-ZFu" secondAttribute="bottom" constant="12" id="58C-qG-Zed"/>
+                                            <constraint firstItem="M2N-75-ZFu" firstAttribute="leading" secondItem="Z0F-33-iTI" secondAttribute="trailing" constant="70" id="7Ut-Lz-ssI"/>
                                             <constraint firstItem="Z0F-33-iTI" firstAttribute="leading" secondItem="hOw-xG-PLB" secondAttribute="leading" constant="20" id="Isj-oX-zdw"/>
                                             <constraint firstItem="Z0F-33-iTI" firstAttribute="centerY" secondItem="hOw-xG-PLB" secondAttribute="centerY" id="Upi-aC-ufl"/>
                                             <constraint firstAttribute="height" constant="59" id="eO1-LL-wiW"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OgH-pJ-TP7">
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OgH-pJ-TP7">
                                         <rect key="frame" x="419" y="19" width="240" height="128"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="cr4-R7-cPe"/>
-                                            <constraint firstAttribute="width" constant="240" id="mSU-Md-qjg"/>
-                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -70,6 +75,7 @@
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="ant-hf-KBj" id="kfL-Ge-XBp"/>
+                        <outlet property="confidenceLabel" destination="M2N-75-ZFu" id="uX7-pd-zG6"/>
                         <outlet property="infoLabel" destination="Z0F-33-iTI" id="wHh-VX-jtl"/>
                         <outlet property="outputImageView" destination="OgH-pJ-TP7" id="BHQ-QN-Tm5"/>
                     </connections>
