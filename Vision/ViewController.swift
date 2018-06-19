@@ -21,7 +21,7 @@ class ViewController: UIViewController, CameraDelegate {
         super.viewDidLoad()
         cameraView.videoFeedDelegate = self
         DispatchQueue.main.async {
-            self.cameraView.start()
+            self.cameraView.start(decoration: .rectView)
         }
         self.imageClassifier = ImageClassifier()
         //            self.classifierRunning()
@@ -56,28 +56,32 @@ class ViewController: UIViewController, CameraDelegate {
         }
         if true {
             if imageClassifier?.isProcessing == true {
-                
+                //skip this
             } else {
                 imageClassifier?.classifyImage(image: croppedImage) { visionObject in
                     DispatchQueue.main.async {
                         self.infoLabel.text = visionObject.toString()
                         
                         switch visionObject {
-                        case .virginaFront(let p, let _):
-                            self.confidenceLabel.text = "\(p)"
-                            if p > 0.7 {
-                                cameraView.update(forState: .detected)
+                        case .virginaFront(let p, let _),
+                             .virginaBack(let p, let _):
+                            self.confidenceLabel.text = "\(p * 100)%"
+                            if p > 0.97 {
+                                cameraView.update(forState: .detectedVirginia)
                             } else {
                                 cameraView.update(forState: .scanning)
                             }
-                        case .virginaBack(let p, let _):
-                            self.confidenceLabel.text = "\(p)"
-                            if p > 0.7 {
-                                cameraView.update(forState: .detected)
+                        case .BofaDebitCardFront(let p, let _),
+                             .BofaDebitCardBack(let p, let _):
+                            self.confidenceLabel.text = "\(p * 100)%"
+                            if p > 0.97 {
+                                cameraView.update(forState: .detectedBofaDebitCard)
                             } else {
                                 cameraView.update(forState: .scanning)
                             }
-                        default: cameraView.update(forState: .scanning)
+                        default:
+                            cameraView.update(forState: .scanning)
+                            self.confidenceLabel.text = "---"
                         }
                     }
                 }

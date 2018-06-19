@@ -41,7 +41,6 @@ class ImageClassifier {
             completionHandler?(.coreMLAPIFailure)
             return
         }
-        
         if classifications.isEmpty {
             completionHandler?(.failedToClassify)
         } else {

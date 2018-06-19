@@ -21,8 +21,13 @@ struct VideoStreamFrame {
 
 enum CameraViewState {
     case scanning
-    case detected
+    case detectedVirginia
+    case detectedBofaDebitCard
     case warning
+}
+enum CameraViewDecorations {
+    case none
+    case rectView
 }
 class CameraView: UIView, FrameExtractorDelegate {
     var frameExtractor: FrameExtractor!
@@ -39,18 +44,20 @@ class CameraView: UIView, FrameExtractorDelegate {
     }
     
     var previewLayer: AVCaptureVideoPreviewLayer? {
-            return layer as? AVCaptureVideoPreviewLayer
+        return layer as? AVCaptureVideoPreviewLayer
     }
     
-    func start() {
+    func start(decoration: CameraViewDecorations) {
         self.frameExtractor = FrameExtractor()
         self.frameExtractor.delegate = self
         if let previewLayer = previewLayer {
             previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
             previewLayer.session = frameExtractor.captureSession
         }
-        DispatchQueue.main.async {
-            self.addGuideView()
+        if decoration == .rectView {
+            DispatchQueue.main.async {
+                self.addGuideView()
+            }
         }
     }
     
@@ -79,7 +86,7 @@ class CameraView: UIView, FrameExtractorDelegate {
     }
     
     func captured(image: UIImage) {
-            let videoStreamFrame = VideoStreamFrame(image: image, rect: self.guideRect, previewLayer: self.previewLayer)
+        let videoStreamFrame = VideoStreamFrame(image: image, rect: self.guideRect, previewLayer: self.previewLayer)
         DispatchQueue.global().async {
             self.videoFeedDelegate?.videoFrameFeed(videoStreamFrame: videoStreamFrame, guideRect: self.guideRect, cameraView: self)
         }
@@ -91,8 +98,10 @@ class CameraView: UIView, FrameExtractorDelegate {
             switch state {
             case .scanning:
                 self.guideView.layer.borderColor = UIColor.black.cgColor
-            case .detected:
+            case .detectedVirginia:
                 self.guideView.layer.borderColor = UIColor.green.cgColor
+            case .detectedBofaDebitCard:
+                self.guideView.layer.borderColor = UIColor.orange.cgColor
             case .warning:
                 self.guideView.layer.borderColor = UIColor.red.cgColor
             }

@@ -10,7 +10,7 @@
 		060CD86F20D49B500061110C /* VisionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060CD86E20D49B500061110C /* VisionObject.swift */; };
 		060CD87320D5BEE90061110C /* VA.png in Resources */ = {isa = PBXBuildFile; fileRef = 060CD87220D5BEE90061110C /* VA.png */; };
 		060CD87520D5C5050061110C /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060CD87420D5C5050061110C /* ImageClassifier.swift */; };
-		060CD87920D5D6530061110C /* DLCropped.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 060CD87820D5D6530061110C /* DLCropped.mlmodel */; };
+		060CD87B20D5DA390061110C /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 060CD87A20D5DA380061110C /* MobileNet.mlmodel */; };
 		064A250320C9F3B7004B6DEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064A250220C9F3B7004B6DEE /* AppDelegate.swift */; };
 		064A250520C9F3B7004B6DEE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064A250420C9F3B7004B6DEE /* ViewController.swift */; };
 		064A250820C9F3B7004B6DEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 064A250620C9F3B7004B6DEE /* Main.storyboard */; };
@@ -18,6 +18,7 @@
 		064A250D20C9F3B8004B6DEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 064A250B20C9F3B8004B6DEE /* LaunchScreen.storyboard */; };
 		064A251520C9F447004B6DEE /* FrameExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064A251420C9F447004B6DEE /* FrameExtractor.swift */; };
 		064FD88120CA6FDB006C2A89 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FD88020CA6FDB006C2A89 /* CameraView.swift */; };
+		066042E520D8C36C00C05CDC /* DLCropped.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 066042E420D8C36B00C05CDC /* DLCropped.mlmodel */; };
 		06B8486120CE013200050412 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B8486020CE013200050412 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
 		06C8011220CE15560036F770 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C8011120CE15560036F770 /* CoreML.framework */; };
 		06C8011420CE15680036F770 /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C8011320CE15680036F770 /* Vision.framework */; };
@@ -35,7 +36,7 @@
 		060CD86E20D49B500061110C /* VisionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionObject.swift; sourceTree = "<group>"; };
 		060CD87220D5BEE90061110C /* VA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VA.png; sourceTree = "<group>"; };
 		060CD87420D5C5050061110C /* ImageClassifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
-		060CD87820D5D6530061110C /* DLCropped.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DLCropped.mlmodel; sourceTree = "<group>"; };
+		060CD87A20D5DA380061110C /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 		064A24FF20C9F3B7004B6DEE /* ML_Vision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ML_Vision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		064A250220C9F3B7004B6DEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		064A250420C9F3B7004B6DEE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +46,7 @@
 		064A250E20C9F3B8004B6DEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		064A251420C9F447004B6DEE /* FrameExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameExtractor.swift; sourceTree = "<group>"; };
 		064FD88020CA6FDB006C2A89 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		066042E420D8C36B00C05CDC /* DLCropped.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DLCropped.mlmodel; sourceTree = "<group>"; };
 		06B8486020CE013200050412 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
 		06C8011120CE15560036F770 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		06C8011320CE15680036F770 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
@@ -163,7 +165,8 @@
 		06D54F5820D1C1F000CBB95E /* ML_Models */ = {
 			isa = PBXGroup;
 			children = (
-				060CD87820D5D6530061110C /* DLCropped.mlmodel */,
+				066042E420D8C36B00C05CDC /* DLCropped.mlmodel */,
+				060CD87A20D5DA380061110C /* MobileNet.mlmodel */,
 				06D54F6E20D22D2000CBB95E /* DL_C1.mlmodel */,
 				06C8011720CEE2280036F770 /* DL1.mlmodel */,
 				06C8011920CEF9CF0036F770 /* DL2.mlmodel */,
@@ -256,6 +259,8 @@
 				064A251520C9F447004B6DEE /* FrameExtractor.swift in Sources */,
 				06C8011A20CEF9CF0036F770 /* DL2.mlmodel in Sources */,
 				06C8011620CE15AD0036F770 /* DL.mlmodel in Sources */,
+				060CD87B20D5DA390061110C /* MobileNet.mlmodel in Sources */,
+				066042E520D8C36C00C05CDC /* DLCropped.mlmodel in Sources */,
 				064A250520C9F3B7004B6DEE /* ViewController.swift in Sources */,
 				06C8011820CEE2280036F770 /* DL1.mlmodel in Sources */,
 				06D54F5F20D1C98F00CBB95E /* CIImage+PrespectiveCorrection.swift in Sources */,
@@ -267,7 +272,6 @@
 				06D54F5B20D1C24600CBB95E /* CameraGuideView.swift in Sources */,
 				060CD87520D5C5050061110C /* ImageClassifier.swift in Sources */,
 				064FD88120CA6FDB006C2A89 /* CameraView.swift in Sources */,
-				060CD87920D5D6530061110C /* DLCropped.mlmodel in Sources */,
 				06D54F6F20D22D2000CBB95E /* DL_C1.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
