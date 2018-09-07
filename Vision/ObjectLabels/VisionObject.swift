@@ -15,31 +15,32 @@ enum VisionObject {
     case texasFront(Float, [VisionObject]?)
     case texasBack(Float, [VisionObject]?)
     case c1VentureCreditFront(Float, [VisionObject]?)
-    case c1VentureCreditBack(Float, [VisionObject]?)
-    case BofaDebitCardFront(Float, [VisionObject]?)
-    case BofaDebitCardBack(Float, [VisionObject]?)
+    case c1_360(Float, [VisionObject]?)
+    case capitalOneCard(Float, [VisionObject]?)
+    case USD(Float, [VisionObject]?)
     case others(Float, [VisionObject]?)
     case failedToClassify
     case coreMLAPIFailure
 
     init(objectTag: String, probability: Float, lessProbableObjects: [VisionObject]?) {
+        print("objectTag: \(objectTag)(\(probability)")
         switch objectTag {
-        case "VA_Front":
+        case "va_front":
             self = .virginaFront(probability, lessProbableObjects)
-        case "VA_Back":
+        case "va_back":
             self = .virginaBack(probability, lessProbableObjects)
-        case "TX_Front":
+        case "tx_front":
             self = .texasFront(probability, lessProbableObjects)
-        case "TX_Back":
+        case "tx_back":
             self = .texasBack(probability, lessProbableObjects)
         case "C1VentureCCFront":
             self = .c1VentureCreditFront(probability, lessProbableObjects)
-        case "C1VentureCCBack":
-            self = .c1VentureCreditBack(probability, lessProbableObjects)
-        case "BofaDebitCardFront":
-            self = .BofaDebitCardFront(probability, lessProbableObjects)
-        case "BofaDebitCardBack":
-            self = .BofaDebitCardBack(probability, lessProbableObjects)
+        case "c1_360":
+            self = .c1_360(probability, lessProbableObjects)
+        case "capital_one_card":
+            self = .capitalOneCard(probability, lessProbableObjects)
+        case "usd":
+            self = .USD(probability, lessProbableObjects)
         default:
             self = .others(probability, lessProbableObjects)
         }
@@ -54,9 +55,9 @@ extension VisionObject {
         case .texasFront: return "Texas License Front"
         case .texasBack: return "Texas License Back"
         case .c1VentureCreditFront: return "Capital One Venture Front"
-        case .c1VentureCreditBack: return "Capital One Venture Back"
-        case .BofaDebitCardFront: return "BofA Debit Card Front"
-        case .BofaDebitCardBack: return "BofA Debit Card Back"
+        case .c1_360: return "Capital One 360"
+        case .USD: return "Currency"
+        case .capitalOneCard: return "Capital One Card"
         case .failedToClassify: return "Failed to classify image"
         case .coreMLAPIFailure: return "Core ML API failure"
         case .others: return "Others"

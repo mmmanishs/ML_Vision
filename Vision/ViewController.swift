@@ -66,16 +66,8 @@ class ViewController: UIViewController, CameraDelegate {
                         case .virginaFront(let p, let _),
                              .virginaBack(let p, let _):
                             self.confidenceLabel.text = "\(p * 100)%"
-                            if p > 0.97 {
+                            if p > 0.85 {
                                 cameraView.update(forState: .detectedVirginia)
-                            } else {
-                                cameraView.update(forState: .scanning)
-                            }
-                        case .BofaDebitCardFront(let p, let _),
-                             .BofaDebitCardBack(let p, let _):
-                            self.confidenceLabel.text = "\(p * 100)%"
-                            if p > 0.97 {
-                                cameraView.update(forState: .detectedBofaDebitCard)
                             } else {
                                 cameraView.update(forState: .scanning)
                             }

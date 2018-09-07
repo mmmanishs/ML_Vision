@@ -17,7 +17,7 @@ class ImageClassifier {
     var completionHandler: VisionMLCompletionHandler?
     init() {
         do {
-            let model = try VNCoreMLModel(for: DLCropped().model)
+            let model = try VNCoreMLModel(for: DL2().model)
             request1 = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
                 if error == nil {
                     self?.processClassifications(for: request)

@@ -97,7 +97,7 @@ class CameraView: UIView, FrameExtractorDelegate {
         DispatchQueue.main.async {
             switch state {
             case .scanning:
-                self.guideView.layer.borderColor = UIColor.black.cgColor
+                self.guideView.layer.borderColor = UIColor.red.cgColor
             case .detectedVirginia:
                 self.guideView.layer.borderColor = UIColor.green.cgColor
             case .detectedBofaDebitCard:
