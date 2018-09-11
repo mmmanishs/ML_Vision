@@ -23,7 +23,7 @@ enum VisionObject {
     case coreMLAPIFailure
 
     init(objectTag: String, probability: Float, lessProbableObjects: [VisionObject]?) {
-        print("objectTag: \(objectTag)(\(probability)")
+//        print("objectTag: \(objectTag)(\(probability)")
         switch objectTag {
         case "va_front":
             self = .virginaFront(probability, lessProbableObjects)

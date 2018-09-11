@@ -30,7 +30,7 @@ class ViewController: UIViewController, CameraDelegate {
     func classifierRunning() {
         if let image = UIImage(named: "VA"){
             imageClassifier?.classifyImage(image: image) {visionObject in
-                print(visionObject.toString())
+//                print(visionObject.toString())
             }
         }
     }

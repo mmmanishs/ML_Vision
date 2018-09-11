@@ -11,6 +11,8 @@
 		060CD87320D5BEE90061110C /* VA.png in Resources */ = {isa = PBXBuildFile; fileRef = 060CD87220D5BEE90061110C /* VA.png */; };
 		060CD87520D5C5050061110C /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060CD87420D5C5050061110C /* ImageClassifier.swift */; };
 		060CD87B20D5DA390061110C /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 060CD87A20D5DA380061110C /* MobileNet.mlmodel */; };
+		061EE7642144B94600455818 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 061EE7632144B94600455818 /* Resnet50.mlmodel */; };
+		061EE7682144C3C000455818 /* TinyYOLO.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 061EE7672144C3C000455818 /* TinyYOLO.mlmodel */; };
 		064A250320C9F3B7004B6DEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064A250220C9F3B7004B6DEE /* AppDelegate.swift */; };
 		064A250520C9F3B7004B6DEE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064A250420C9F3B7004B6DEE /* ViewController.swift */; };
 		064A250820C9F3B7004B6DEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 064A250620C9F3B7004B6DEE /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 		060CD87220D5BEE90061110C /* VA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VA.png; sourceTree = "<group>"; };
 		060CD87420D5C5050061110C /* ImageClassifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
 		060CD87A20D5DA380061110C /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
+		061EE7632144B94600455818 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
+		061EE7672144C3C000455818 /* TinyYOLO.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TinyYOLO.mlmodel; sourceTree = "<group>"; };
 		064A24FF20C9F3B7004B6DEE /* ML_Vision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ML_Vision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		064A250220C9F3B7004B6DEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		064A250420C9F3B7004B6DEE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 		06D54F5820D1C1F000CBB95E /* ML_Models */ = {
 			isa = PBXGroup;
 			children = (
+				061EE7672144C3C000455818 /* TinyYOLO.mlmodel */,
+				061EE7632144B94600455818 /* Resnet50.mlmodel */,
 				0684F4522140ED20009D81CF /* DL2.mlmodel */,
 				066042E420D8C36B00C05CDC /* DLCropped.mlmodel */,
 				060CD87A20D5DA380061110C /* MobileNet.mlmodel */,
@@ -263,9 +269,11 @@
 				064A250520C9F3B7004B6DEE /* ViewController.swift in Sources */,
 				06C8011820CEE2280036F770 /* DL1.mlmodel in Sources */,
 				06D54F5F20D1C98F00CBB95E /* CIImage+PrespectiveCorrection.swift in Sources */,
+				061EE7682144C3C000455818 /* TinyYOLO.mlmodel in Sources */,
 				06D54F6120D1E91D00CBB95E /* UIImage+Cropping.swift in Sources */,
 				064A250320C9F3B7004B6DEE /* AppDelegate.swift in Sources */,
 				06B8486120CE013200050412 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
+				061EE7642144B94600455818 /* Resnet50.mlmodel in Sources */,
 				06D54F5D20D1C8BC00CBB95E /* ImageCropper.swift in Sources */,
 				060CD86F20D49B500061110C /* VisionObject.swift in Sources */,
 				06D54F5B20D1C24600CBB95E /* CameraGuideView.swift in Sources */,
