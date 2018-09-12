@@ -25,11 +25,11 @@ enum VisionObject {
     init(objectTag: String, probability: Float, lessProbableObjects: [VisionObject]?) {
 //        print("objectTag: \(objectTag)(\(probability)")
         switch objectTag {
-        case "va_front":
+        case "VA_Front":
             self = .virginaFront(probability, lessProbableObjects)
-        case "va_back":
+        case "VA_Back":
             self = .virginaBack(probability, lessProbableObjects)
-        case "tx_front":
+        case "TX_Front":
             self = .texasFront(probability, lessProbableObjects)
         case "tx_back":
             self = .texasBack(probability, lessProbableObjects)

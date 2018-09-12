@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import FaceCropper
 
 class ViewController: UIViewController, CameraDelegate {
     @IBOutlet weak var cameraView: CameraView!
@@ -17,6 +18,7 @@ class ViewController: UIViewController, CameraDelegate {
     var imageClassifier: ImageClassifier?
     var frameExtractor: FrameExtractor!
     var frameCount = 0
+    var shouldProcess = true
     override func viewDidLoad() {
         super.viewDidLoad()
         cameraView.videoFeedDelegate = self
@@ -44,39 +46,45 @@ class ViewController: UIViewController, CameraDelegate {
     }
     
     func videoFrameFeed(videoStreamFrame: VideoStreamFrame, guideRect: CGRect, cameraView: CameraView) {
-        guard let previewLayer = cameraView.previewLayer else {
-            return
+        guard shouldProcess == true,
+            let previewLayer = cameraView.previewLayer else {
+                return
         }
         frameCount += 1
+        shouldProcess = false
         guard let croppedImage = videoStreamFrame.image.crop(rect: guideRect, previewLayer: previewLayer) else {
             return
         }
         DispatchQueue.main.async {
             self.outputImageView.image = videoStreamFrame.image.crop(rect: guideRect, previewLayer: previewLayer)
         }
-        if true {
-            if imageClassifier?.isProcessing == true {
-                //skip this
-            } else {
-                imageClassifier?.classifyImage(image: croppedImage) { visionObject in
-                    DispatchQueue.main.async {
-                        self.infoLabel.text = visionObject.toString()
-                        
-                        switch visionObject {
-                        case .virginaFront(let p, let _),
-                             .virginaBack(let p, let _):
-                            self.confidenceLabel.text = "\(p * 100)%"
+        imageClassifier?.classifyImage(image: croppedImage) { visionObject in
+            DispatchQueue.main.async {
+                self.infoLabel.text = "Scanning"
+                switch visionObject {
+                case .virginaFront(let p, let _):
+                    let image = croppedImage
+                    image.face.crop { result in
+                        switch result {
+                        case .success(let faces):
                             if p > 0.85 {
                                 cameraView.update(forState: .detectedVirginia)
                             } else {
                                 cameraView.update(forState: .scanning)
                             }
-                        default:
-                            cameraView.update(forState: .scanning)
-                            self.confidenceLabel.text = "---"
+                        self.infoLabel.text = visionObject.toString()
+                        case .notFound: break
+                        // When the image doesn't contain any face, `result` will be `.notFound`.
+                        case .failure(let error): break
+                            // When the any error occured, `result` will be `failure`.
                         }
                     }
+  
+                default:
+                    cameraView.update(forState: .scanning)
+                    self.confidenceLabel.text = "---"
                 }
+                self.shouldProcess = true
             }
         }
     }

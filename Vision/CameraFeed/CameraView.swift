@@ -87,10 +87,7 @@ class CameraView: UIView, FrameExtractorDelegate {
     
     func captured(image: UIImage) {
         let videoStreamFrame = VideoStreamFrame(image: image, rect: self.guideRect, previewLayer: self.previewLayer)
-        DispatchQueue.global().async {
-            self.videoFeedDelegate?.videoFrameFeed(videoStreamFrame: videoStreamFrame, guideRect: self.guideRect, cameraView: self)
-        }
-        
+        self.videoFeedDelegate?.videoFrameFeed(videoStreamFrame: videoStreamFrame, guideRect: self.guideRect, cameraView: self)
     }
     
     func update(forState state: CameraViewState) {

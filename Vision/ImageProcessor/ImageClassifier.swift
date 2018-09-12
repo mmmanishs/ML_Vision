@@ -24,7 +24,7 @@ class ImageClassifier {
     var completionHandler: VisionMLCompletionHandler?
     init() {
         do {
-            let model = try VNCoreMLModel(for: DLCropped().model)
+            let model = try VNCoreMLModel(for: VATX().model)
             dl2Request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
                 if error == nil {
                     self?.processClassifications(for: request, for: .dl2)
@@ -75,30 +75,28 @@ class ImageClassifier {
     
     func classifyImage(image: UIImage, completionHandler: VisionMLCompletionHandler?) {
         guard let dl2Request = dl2Request,
-        let resnet50 = resnet50 else {
-            return
+            let resnet50 = resnet50 else {
+                return
         }
         isProcessing = true
         let orientation = CGImagePropertyOrientation(image.imageOrientation)
         guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
         
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.completionHandler = completionHandler
-            let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
-            do {
-//                try handler.perform([dl2Request, resnet50])
-                try handler.perform([dl2Request])
-            } catch {
-                /*
-                 This handler catches general image processing errors. The `classificationRequest`'s
-                 completion handler `processClassifications(_:error:)` catches errors specific
-                 to processing that request.
-                 */
-                self.imageClassified(tag: nil, probablity: 0.0, modelIdentifier: .dl2)
-            }
+        self.completionHandler = completionHandler
+        let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
+        do {
+            //                try handler.perform([dl2Request, resnet50])
+            try handler.perform([dl2Request])
+        } catch {
+            /*
+             This handler catches general image processing errors. The `classificationRequest`'s
+             completion handler `processClassifications(_:error:)` catches errors specific
+             to processing that request.
+             */
+            self.imageClassified(tag: nil, probablity: 0.0, modelIdentifier: .dl2)
         }
     }
-
+    
 }
 
 extension ImageClassifier {

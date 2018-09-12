@@ -1,0 +1,16 @@
+PODS:
+  - FaceCropper (1.0.0)
+
+DEPENDENCIES:
+  - FaceCropper
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - FaceCropper
+
+SPEC CHECKSUMS:
+  FaceCropper: 5037221c279db6ae3cea68e76ac4165c85c7c291
+
+PODFILE CHECKSUM: 3b389f430e4e5495b00d0cfb454c8139817a58d4
+
+COCOAPODS: 1.5.0
