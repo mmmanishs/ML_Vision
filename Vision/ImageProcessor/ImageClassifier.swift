@@ -19,12 +19,12 @@ class ImageClassifier {
     typealias VisionMLCompletionHandler = (VisionObject) -> ()
     var isProcessing = false
     var dl2Request: VNCoreMLRequest?
-    var resnet50: VNCoreMLRequest?
+//    var resnet50: VNCoreMLRequest?
     
     var completionHandler: VisionMLCompletionHandler?
     init() {
         do {
-            let model = try VNCoreMLModel(for: VATX().model)
+            let model = try VNCoreMLModel(for: Face().model)
             dl2Request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
                 if error == nil {
                     self?.processClassifications(for: request, for: .dl2)
@@ -33,17 +33,17 @@ class ImageClassifier {
             dl2Request?.imageCropAndScaleOption = .centerCrop
         } catch {
         }
-        
-        do {
-            let model = try VNCoreMLModel(for: MobileNet().model)
-            resnet50 = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
-                if error == nil {
-                    self?.processClassifications(for: request, for: .resnet50)
-                }
-            })
-            resnet50?.imageCropAndScaleOption = .centerCrop
-        } catch {
-        }
+//
+//        do {
+//            let model = try VNCoreMLModel(for: MobileNet().model)
+//            resnet50 = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
+//                if error == nil {
+//                    self?.processClassifications(for: request, for: .resnet50)
+//                }
+//            })
+//            resnet50?.imageCropAndScaleOption = .centerCrop
+//        } catch {
+//        }
     }
     
     func processClassifications(for request: VNRequest, for modelIdentifier: MLModelIdentifier) {
@@ -74,8 +74,7 @@ class ImageClassifier {
     }
     
     func classifyImage(image: UIImage, completionHandler: VisionMLCompletionHandler?) {
-        guard let dl2Request = dl2Request,
-            let resnet50 = resnet50 else {
+        guard let dl2Request = dl2Request else {
                 return
         }
         isProcessing = true
