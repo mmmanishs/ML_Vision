@@ -10,9 +10,8 @@
 		060CD86F20D49B500061110C /* VisionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060CD86E20D49B500061110C /* VisionObject.swift */; };
 		060CD87320D5BEE90061110C /* VA.png in Resources */ = {isa = PBXBuildFile; fileRef = 060CD87220D5BEE90061110C /* VA.png */; };
 		060CD87520D5C5050061110C /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060CD87420D5C5050061110C /* ImageClassifier.swift */; };
-		063E077A2153366100C1F1D3 /* NSImage+FaceExtraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063E07792153366100C1F1D3 /* NSImage+FaceExtraction.swift */; };
+		063E077A2153366100C1F1D3 /* UIImage+FaceExtraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063E07792153366100C1F1D3 /* UIImage+FaceExtraction.swift */; };
 		063E077C2153379800C1F1D3 /* Face.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 063E077B2153379800C1F1D3 /* Face.mlmodel */; };
-		063E077E215337B500C1F1D3 /* 0001.png in Resources */ = {isa = PBXBuildFile; fileRef = 063E077D215337B500C1F1D3 /* 0001.png */; };
 		063E0780215337CA00C1F1D3 /* String+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063E077F215337CA00C1F1D3 /* String+Subscript.swift */; };
 		063E0782215337D100C1F1D3 /* String+FileManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063E0781215337D100C1F1D3 /* String+FileManagement.swift */; };
 		064A250320C9F3B7004B6DEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064A250220C9F3B7004B6DEE /* AppDelegate.swift */; };
@@ -36,9 +35,8 @@
 		060CD86E20D49B500061110C /* VisionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionObject.swift; sourceTree = "<group>"; };
 		060CD87220D5BEE90061110C /* VA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VA.png; sourceTree = "<group>"; };
 		060CD87420D5C5050061110C /* ImageClassifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
-		063E07792153366100C1F1D3 /* NSImage+FaceExtraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+FaceExtraction.swift"; sourceTree = "<group>"; };
+		063E07792153366100C1F1D3 /* UIImage+FaceExtraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+FaceExtraction.swift"; sourceTree = "<group>"; };
 		063E077B2153379800C1F1D3 /* Face.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Face.mlmodel; sourceTree = "<group>"; };
-		063E077D215337B500C1F1D3 /* 0001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0001.png; sourceTree = "<group>"; };
 		063E077F215337CA00C1F1D3 /* String+Subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Subscript.swift"; sourceTree = "<group>"; };
 		063E0781215337D100C1F1D3 /* String+FileManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FileManagement.swift"; sourceTree = "<group>"; };
 		064A24FF20C9F3B7004B6DEE /* ML_Vision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ML_Vision.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +132,7 @@
 		06D54F5420D1C1AB00CBB95E /* iOSExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				063E07792153366100C1F1D3 /* UIImage+FaceExtraction.swift */,
 				063E0781215337D100C1F1D3 /* String+FileManagement.swift */,
 				063E077F215337CA00C1F1D3 /* String+Subscript.swift */,
 				06B8486020CE013200050412 /* CGImagePropertyOrientation+UIImageOrientation.swift */,
@@ -165,7 +164,6 @@
 			children = (
 				06D54F5C20D1C8BC00CBB95E /* ImageCropper.swift */,
 				060CD87420D5C5050061110C /* ImageClassifier.swift */,
-				063E07792153366100C1F1D3 /* NSImage+FaceExtraction.swift */,
 			);
 			path = ImageProcessor;
 			sourceTree = "<group>";
@@ -173,7 +171,6 @@
 		06D54F5820D1C1F000CBB95E /* ML_Models */ = {
 			isa = PBXGroup;
 			children = (
-				063E077D215337B500C1F1D3 /* 0001.png */,
 				063E077B2153379800C1F1D3 /* Face.mlmodel */,
 			);
 			path = ML_Models;
@@ -259,7 +256,6 @@
 			files = (
 				064A250D20C9F3B8004B6DEE /* LaunchScreen.storyboard in Resources */,
 				064A250A20C9F3B8004B6DEE /* Assets.xcassets in Resources */,
-				063E077E215337B500C1F1D3 /* 0001.png in Resources */,
 				060CD87320D5BEE90061110C /* VA.png in Resources */,
 				064A250820C9F3B7004B6DEE /* Main.storyboard in Resources */,
 			);
@@ -311,7 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				063E077A2153366100C1F1D3 /* NSImage+FaceExtraction.swift in Sources */,
+				063E077A2153366100C1F1D3 /* UIImage+FaceExtraction.swift in Sources */,
 				063E0782215337D100C1F1D3 /* String+FileManagement.swift in Sources */,
 				064A251520C9F447004B6DEE /* FrameExtractor.swift in Sources */,
 				064A250520C9F3B7004B6DEE /* ViewController.swift in Sources */,
@@ -478,7 +474,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.manish.Vision;
+				PRODUCT_BUNDLE_IDENTIFIER = com.manish.VisionFace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -498,7 +494,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.manish.Vision;
+				PRODUCT_BUNDLE_IDENTIFIER = com.manish.VisionFace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

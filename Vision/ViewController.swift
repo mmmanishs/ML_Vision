@@ -12,8 +12,6 @@ import FaceCropper
 
 class ViewController: UIViewController, CameraDelegate {
     @IBOutlet weak var cameraView: CameraView!
-    @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var confidenceLabel: UILabel!
     @IBOutlet weak var outputImageView: UIImageView!
     var imageClassifier: ImageClassifier?
     var frameExtractor: FrameExtractor!
@@ -26,13 +24,12 @@ class ViewController: UIViewController, CameraDelegate {
             self.cameraView.start(decoration: .rectView)
         }
         self.imageClassifier = ImageClassifier()
-        //            self.classifierRunning()
     }
     
     func classifierRunning() {
         if let image = UIImage(named: "VA"){
             imageClassifier?.classifyImage(image: image) {visionObject in
-//                print(visionObject.toString())
+                //                print(visionObject.toString())
             }
         }
     }
@@ -46,46 +43,37 @@ class ViewController: UIViewController, CameraDelegate {
     }
     
     func videoFrameFeed(videoStreamFrame: VideoStreamFrame, guideRect: CGRect, cameraView: CameraView) {
-        guard shouldProcess == true,
+        guard shouldProcess,
             let previewLayer = cameraView.previewLayer else {
                 return
         }
+
         frameCount += 1
         shouldProcess = false
-        guard let croppedImage = videoStreamFrame.image.crop(rect: guideRect, previewLayer: previewLayer) else {
-            return
-        }
-        DispatchQueue.main.async {
-            self.outputImageView.image = videoStreamFrame.image.crop(rect: guideRect, previewLayer: previewLayer)
-        }
-        imageClassifier?.classifyImage(image: croppedImage) { visionObject in
-            DispatchQueue.main.async {
-                self.infoLabel.text = "Scanning"
-                switch visionObject {
-                case .virginaFront(let p, let _):
-                    let image = croppedImage
-                    image.face.crop { result in
-                        switch result {
-                        case .success(let faces):
-                            if p > 0.85 {
-                                cameraView.update(forState: .detectedVirginia)
-                            } else {
-                                cameraView.update(forState: .scanning)
-                            }
-                        self.infoLabel.text = visionObject.toString()
-                        case .notFound: break
-                        // When the image doesn't contain any face, `result` will be `.notFound`.
-                        case .failure(let error): break
-                            // When the any error occured, `result` will be `failure`.
-                        }
-                    }
-  
-                default:
-                    cameraView.update(forState: .scanning)
-                    self.confidenceLabel.text = "---"
-                }
-                self.shouldProcess = true
+        
+        videoStreamFrame.image.extractFace() { faces in
+            self.shouldProcess = true
+            guard let faces = faces,
+                faces.count > 0 else {
+                    return
             }
+            let face = faces[0]
+            DispatchQueue.main.async {
+                self.outputImageView.image = nil
+                self.outputImageView.image = face
+                print("face detected...")
+            }
+
+
+//            DispatchQueue.main.async {
+//                let face = faces[0]
+//                self.imageClassifier?.classifyImage(image: face) { visionObject in
+//                    DispatchQueue.main.async {
+//                        self.shouldProcess = true
+//                    }
+//                }
+//
+//            }
         }
     }
 }

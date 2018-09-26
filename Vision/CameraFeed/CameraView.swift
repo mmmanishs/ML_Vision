@@ -56,7 +56,7 @@ class CameraView: UIView, FrameExtractorDelegate {
         }
         if decoration == .rectView {
             DispatchQueue.main.async {
-                self.addGuideView()
+//                self.addGuideView()
             }
         }
     }

@@ -79,7 +79,10 @@ class FrameExtractor: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     // MARK: Sample buffer to UIImage conversion
     private func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> UIImage? {
-        guard let imageBuffer = sampleBuffer.imageBuffer else { return nil }
+        guard let imageBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+            return nil
+        }
+//        guard let imageBuffer = sampleBuffer.imageBuffer else { return nil }
         let ciImage = CIImage(cvPixelBuffer: imageBuffer)
         guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else { return nil }
         return UIImage(cgImage: cgImage)

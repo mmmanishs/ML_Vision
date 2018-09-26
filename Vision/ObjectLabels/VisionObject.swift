@@ -10,6 +10,8 @@ import Foundation
 import Vision
 
 enum VisionObject {
+    case Manish(Float, [VisionObject]?)
+    case Person2(Float, [VisionObject]?)
     case virginaFront(Float, [VisionObject]?)
     case virginaBack(Float, [VisionObject]?)
     case texasFront(Float, [VisionObject]?)
@@ -25,6 +27,10 @@ enum VisionObject {
     init(objectTag: String, probability: Float, lessProbableObjects: [VisionObject]?) {
 //        print("objectTag: \(objectTag)(\(probability)")
         switch objectTag {
+        case "Manish":
+            self = .Manish(probability, lessProbableObjects)
+        case "Person2":
+            self = .Person2(probability, lessProbableObjects)
         case "VA_Front":
             self = .virginaFront(probability, lessProbableObjects)
         case "VA_Back":
@@ -50,6 +56,9 @@ enum VisionObject {
 extension VisionObject {
     func toString() -> String {
         switch self {
+        case .Manish: return "Manish"
+        case .Person2: return "Person2"
+        case .virginaBack: return "Virgina License Back"
         case .virginaFront: return "Virgina License Front"
         case .virginaBack: return "Virgina License Back"
         case .texasFront: return "Texas License Front"

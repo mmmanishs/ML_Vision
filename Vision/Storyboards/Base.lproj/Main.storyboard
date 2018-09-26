@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,44 +24,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ant-hf-KBj" customClass="CameraView" customModule="ML_Vision" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOw-xG-PLB">
-                                        <rect key="frame" x="0.0" y="316" width="667" height="59"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0F-33-iTI">
-                                                <rect key="frame" x="20" y="11.5" width="55" height="36"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2N-75-ZFu">
-                                                <rect key="frame" x="145" y="11" width="55" height="36"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <imageView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OgH-pJ-TP7">
+                                        <rect key="frame" x="485" y="10" width="172" height="111"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="M2N-75-ZFu" firstAttribute="top" secondItem="hOw-xG-PLB" secondAttribute="top" constant="11" id="05h-wU-ZbP"/>
-                                            <constraint firstAttribute="bottom" secondItem="M2N-75-ZFu" secondAttribute="bottom" constant="12" id="58C-qG-Zed"/>
-                                            <constraint firstItem="M2N-75-ZFu" firstAttribute="leading" secondItem="Z0F-33-iTI" secondAttribute="trailing" constant="70" id="7Ut-Lz-ssI"/>
-                                            <constraint firstItem="Z0F-33-iTI" firstAttribute="leading" secondItem="hOw-xG-PLB" secondAttribute="leading" constant="20" id="Isj-oX-zdw"/>
-                                            <constraint firstItem="Z0F-33-iTI" firstAttribute="centerY" secondItem="hOw-xG-PLB" secondAttribute="centerY" id="Upi-aC-ufl"/>
-                                            <constraint firstAttribute="height" constant="59" id="eO1-LL-wiW"/>
+                                            <constraint firstAttribute="width" constant="172" id="Rba-hP-7jw"/>
+                                            <constraint firstAttribute="height" constant="111" id="TQ2-6m-uVU"/>
                                         </constraints>
-                                    </view>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OgH-pJ-TP7">
-                                        <rect key="frame" x="419" y="19" width="240" height="128"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="hOw-xG-PLB" secondAttribute="bottom" id="9nb-5s-fWE"/>
-                                    <constraint firstAttribute="trailing" secondItem="hOw-xG-PLB" secondAttribute="trailing" id="P2h-r7-bx6"/>
-                                    <constraint firstAttribute="trailing" secondItem="OgH-pJ-TP7" secondAttribute="trailing" constant="8" id="PwE-wC-of8"/>
-                                    <constraint firstItem="OgH-pJ-TP7" firstAttribute="top" secondItem="ant-hf-KBj" secondAttribute="top" constant="19" id="hAC-9R-iEl"/>
-                                    <constraint firstItem="hOw-xG-PLB" firstAttribute="leading" secondItem="ant-hf-KBj" secondAttribute="leading" id="hds-IA-oSs"/>
+                                    <constraint firstItem="OgH-pJ-TP7" firstAttribute="top" secondItem="ant-hf-KBj" secondAttribute="top" constant="10" id="Tdn-32-Ygs"/>
+                                    <constraint firstAttribute="trailing" secondItem="OgH-pJ-TP7" secondAttribute="trailing" constant="10" id="iLh-h3-nKE"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -75,9 +50,7 @@
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="ant-hf-KBj" id="kfL-Ge-XBp"/>
-                        <outlet property="confidenceLabel" destination="M2N-75-ZFu" id="uX7-pd-zG6"/>
-                        <outlet property="infoLabel" destination="Z0F-33-iTI" id="wHh-VX-jtl"/>
-                        <outlet property="outputImageView" destination="OgH-pJ-TP7" id="BHQ-QN-Tm5"/>
+                        <outlet property="outputImageView" destination="OgH-pJ-TP7" id="S5N-hZ-FYf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

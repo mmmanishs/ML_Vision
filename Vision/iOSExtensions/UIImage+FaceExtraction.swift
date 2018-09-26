@@ -29,7 +29,7 @@ extension UIImage {
             }
             completion(faceImages)
         }
-        let requestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: CGImagePropertyOrientation(imageOrientation), options: [:])
+        let requestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: CGImagePropertyOrientation(.downMirrored), options: [:])
         try? requestHandler.perform([faceLandmarksRequest])
     }
 }
