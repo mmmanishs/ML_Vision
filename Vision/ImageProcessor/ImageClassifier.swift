@@ -14,9 +14,19 @@ import ARKit
 enum MLModelIdentifier {
     case dl2
     case resnet50
+    
+    var model: VNCoreMLModel? {
+        switch self {
+        case .dl2:
+            return try? VNCoreMLModel(for: VATX().model)
+        case .resnet50:
+            return try? VNCoreMLModel(for: MobileNet().model)
+        }
+    }
 }
+
 class ImageClassifier {
-    typealias VisionMLCompletionHandler = (VisionObject) -> ()
+    typealias VisionMLCompletionHandler = (VisionObject, String) -> ()
     var isProcessing = false
     var dl2Request: VNCoreMLRequest?
     var resnet50: VNCoreMLRequest?
@@ -73,10 +83,11 @@ class ImageClassifier {
         }
     }
     
-    func classifyImage(image: UIImage, completionHandler: VisionMLCompletionHandler?) {
-        guard let dl2Request = dl2Request,
-            let resnet50 = resnet50 else {
-                return
+    func classifyImage(image: UIImage,
+                       withModel modelIdentifier: MLModelIdentifier,
+                       completionHandler: VisionMLCompletionHandler?) {
+        guard let mlModelRequest = getModelRequest(forIdentifier: modelIdentifier) else {
+            return
         }
         isProcessing = true
         let orientation = CGImagePropertyOrientation(image.imageOrientation)
@@ -85,14 +96,8 @@ class ImageClassifier {
         self.completionHandler = completionHandler
         let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
         do {
-            //                try handler.perform([dl2Request, resnet50])
-            try handler.perform([dl2Request])
+            try handler.perform([mlModelRequest])
         } catch {
-            /*
-             This handler catches general image processing errors. The `classificationRequest`'s
-             completion handler `processClassifications(_:error:)` catches errors specific
-             to processing that request.
-             */
             self.imageClassified(tag: nil, probablity: 0.0, modelIdentifier: .dl2)
         }
     }
@@ -100,9 +105,20 @@ class ImageClassifier {
 }
 
 extension ImageClassifier {
+    func getModelRequest(forIdentifier identifier: MLModelIdentifier) -> VNCoreMLRequest? {
+        switch identifier {
+        case .dl2:
+            return dl2Request
+        case .resnet50:
+            return resnet50
+        }
+    }
+}
+
+extension ImageClassifier {
     func imageClassified(tag: String?, probablity: Float, modelIdentifier: MLModelIdentifier) {
         guard let tag = tag else {
-            completionHandler?(VisionObject.failedToClassify)
+            completionHandler?(VisionObject.failedToClassify, "Failed to classify")
             return
         }
         switch modelIdentifier {
@@ -111,6 +127,6 @@ extension ImageClassifier {
         case .resnet50:
             print("resnet50: \(tag)")
         }
-        completionHandler?(VisionObject(objectTag: tag, probability: probablity, lessProbableObjects: nil))
+        completionHandler?(VisionObject(objectTag: tag, probability: probablity, lessProbableObjects: nil), tag)
     }
 }

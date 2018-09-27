@@ -29,13 +29,13 @@ class ViewController: UIViewController, CameraDelegate {
         //            self.classifierRunning()
     }
     
-    func classifierRunning() {
-        if let image = UIImage(named: "VA"){
-            imageClassifier?.classifyImage(image: image) {visionObject in
-//                print(visionObject.toString())
-            }
-        }
-    }
+//    func classifierRunning() {
+//        if let image = UIImage(named: "VA"){
+//            imageClassifier?.classifyImage(image: image) {visionObject in
+////                print(visionObject.toString())
+//            }
+//        }
+//    }
     
     override var shouldAutorotate: Bool {
         return true
@@ -46,45 +46,53 @@ class ViewController: UIViewController, CameraDelegate {
     }
     
     func videoFrameFeed(videoStreamFrame: VideoStreamFrame, guideRect: CGRect, cameraView: CameraView) {
+        frameCount += 1
         guard shouldProcess == true,
+            frameCount % 15 == 0,
             let previewLayer = cameraView.previewLayer else {
                 return
         }
-        frameCount += 1
         shouldProcess = false
         guard let croppedImage = videoStreamFrame.image.crop(rect: guideRect, previewLayer: previewLayer) else {
             return
         }
         DispatchQueue.main.async {
+            self.outputImageView.image = nil
             self.outputImageView.image = videoStreamFrame.image.crop(rect: guideRect, previewLayer: previewLayer)
         }
-        imageClassifier?.classifyImage(image: croppedImage) { visionObject in
-            DispatchQueue.main.async {
-                self.infoLabel.text = "Scanning"
-                switch visionObject {
-                case .virginaFront(let p, let _):
-                    let image = croppedImage
-                    image.face.crop { result in
-                        switch result {
-                        case .success(let faces):
-                            if p > 0.85 {
-                                cameraView.update(forState: .detectedVirginia)
-                            } else {
-                                cameraView.update(forState: .scanning)
-                            }
-                        self.infoLabel.text = visionObject.toString()
-                        case .notFound: break
-                        // When the image doesn't contain any face, `result` will be `.notFound`.
-                        case .failure(let error): break
-                            // When the any error occured, `result` will be `failure`.
+        
+        // Check for the presense of a face\
+        
+        croppedImage.extractFace() { faces in
+            var modelToUse: MLModelIdentifier!
+            var imageToRunMLOn: UIImage!
+            if let faces = faces,
+                faces.count > 0 {
+                // The classify using the trained model
+                modelToUse = .dl2
+                imageToRunMLOn = croppedImage
+            } else {
+                // If we do not find any face then classify using a different ML model
+                modelToUse = .resnet50
+                imageToRunMLOn = videoStreamFrame.image
+            }
+
+            self.imageClassifier?.classifyImage(image: imageToRunMLOn, withModel: modelToUse) { visionObject, objectTag in
+                DispatchQueue.main.async {
+                    self.infoLabel.text = objectTag
+                    switch visionObject {
+                    case .virginaFront(let p, let _):
+                        if p > 0.85 {
+                            cameraView.update(forState: .detectedVirginia)
+                        } else {
+                            cameraView.update(forState: .scanning)
                         }
+                    default:
+                        cameraView.update(forState: .scanning)
+                        self.confidenceLabel.text = "---"
                     }
-  
-                default:
-                    cameraView.update(forState: .scanning)
-                    self.confidenceLabel.text = "---"
+                    self.shouldProcess = true
                 }
-                self.shouldProcess = true
             }
         }
     }

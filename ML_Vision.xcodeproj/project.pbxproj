@@ -22,6 +22,7 @@
 		064FD88120CA6FDB006C2A89 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FD88020CA6FDB006C2A89 /* CameraView.swift */; };
 		066042E520D8C36C00C05CDC /* DLCropped.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 066042E420D8C36B00C05CDC /* DLCropped.mlmodel */; };
 		066900742148AA5F00B40AF0 /* VATX.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 066900732148AA5F00B40AF0 /* VATX.mlmodel */; };
+		067558A4215C5A43009C7567 /* UIImage+FaceExtraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067558A3215C5A43009C7567 /* UIImage+FaceExtraction.swift */; };
 		0684F4532140ED21009D81CF /* DL2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0684F4522140ED20009D81CF /* DL2.mlmodel */; };
 		06B8486120CE013200050412 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B8486020CE013200050412 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
 		06C8011220CE15560036F770 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C8011120CE15560036F770 /* CoreML.framework */; };
@@ -54,6 +55,7 @@
 		064FD88020CA6FDB006C2A89 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		066042E420D8C36B00C05CDC /* DLCropped.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DLCropped.mlmodel; sourceTree = "<group>"; };
 		066900732148AA5F00B40AF0 /* VATX.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = VATX.mlmodel; sourceTree = "<group>"; };
+		067558A3215C5A43009C7567 /* UIImage+FaceExtraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+FaceExtraction.swift"; sourceTree = "<group>"; };
 		0684F4522140ED20009D81CF /* DL2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DL2.mlmodel; sourceTree = "<group>"; };
 		06B8486020CE013200050412 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
 		06C8011120CE15560036F770 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
@@ -145,6 +147,7 @@
 				06B8486020CE013200050412 /* CGImagePropertyOrientation+UIImageOrientation.swift */,
 				06D54F5E20D1C98F00CBB95E /* CIImage+PrespectiveCorrection.swift */,
 				06D54F6020D1E91D00CBB95E /* UIImage+Cropping.swift */,
+				067558A3215C5A43009C7567 /* UIImage+FaceExtraction.swift */,
 			);
 			path = iOSExtensions;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				06D54F5D20D1C8BC00CBB95E /* ImageCropper.swift in Sources */,
 				060CD86F20D49B500061110C /* VisionObject.swift in Sources */,
 				06D54F5B20D1C24600CBB95E /* CameraGuideView.swift in Sources */,
+				067558A4215C5A43009C7567 /* UIImage+FaceExtraction.swift in Sources */,
 				060CD87520D5C5050061110C /* ImageClassifier.swift in Sources */,
 				064FD88120CA6FDB006C2A89 /* CameraView.swift in Sources */,
 				06D54F6F20D22D2000CBB95E /* DL_C1.mlmodel in Sources */,
