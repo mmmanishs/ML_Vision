@@ -16,7 +16,7 @@ enum MLModelIdentifier {
     case resnet50
 }
 class ImageClassifier {
-    typealias VisionMLCompletionHandler = (VisionObject) -> ()
+    typealias VisionMLCompletionHandler = (MLResult) -> ()
     var isProcessing = false
     var dl2Request: VNCoreMLRequest?
 //    var resnet50: VNCoreMLRequest?
@@ -101,15 +101,9 @@ class ImageClassifier {
 extension ImageClassifier {
     func imageClassified(tag: String?, probablity: Float, modelIdentifier: MLModelIdentifier) {
         guard let tag = tag else {
-            completionHandler?(VisionObject.failedToClassify)
+            completionHandler?(MLResult())
             return
         }
-        switch modelIdentifier {
-        case .dl2:
-            print("dl2: \(tag)")
-        case .resnet50:
-            print("resnet50: \(tag)")
-        }
-        completionHandler?(VisionObject(objectTag: tag, probability: probablity, lessProbableObjects: nil))
+        completionHandler?(MLResult(identifier: tag, probability: probablity))
     }
 }

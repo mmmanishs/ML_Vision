@@ -26,14 +26,6 @@ class ViewController: UIViewController, CameraDelegate {
         self.imageClassifier = ImageClassifier()
     }
     
-    func classifierRunning() {
-        if let image = UIImage(named: "VA"){
-            imageClassifier?.classifyImage(image: image) {visionObject in
-                //                print(visionObject.toString())
-            }
-        }
-    }
-    
     override var shouldAutorotate: Bool {
         return true
     }
@@ -50,30 +42,20 @@ class ViewController: UIViewController, CameraDelegate {
 
         frameCount += 1
         shouldProcess = false
-        
-        videoStreamFrame.image.extractFace() { faces in
-            self.shouldProcess = true
+
+        // need to also get the rect of the face so that it can be marked in the video frame
+        videoStreamFrame.image.extractFace() { [weak self] faces in
+            self?.shouldProcess = true
             guard let faces = faces,
                 faces.count > 0 else {
                     return
             }
+            // If faces are found then run ML algo on them
             let face = faces[0]
-            DispatchQueue.main.async {
-                self.outputImageView.image = nil
-                self.outputImageView.image = face
-                print("face detected...")
+            
+            self?.imageClassifier?.classifyImage(image: face) { mlResult in
+                print(mlResult.identifier)
             }
-
-
-//            DispatchQueue.main.async {
-//                let face = faces[0]
-//                self.imageClassifier?.classifyImage(image: face) { visionObject in
-//                    DispatchQueue.main.async {
-//                        self.shouldProcess = true
-//                    }
-//                }
-//
-//            }
         }
     }
 }
