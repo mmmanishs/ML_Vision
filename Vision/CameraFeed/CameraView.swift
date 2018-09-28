@@ -22,6 +22,7 @@ struct VideoStreamFrame {
 enum CameraViewState {
     case scanning
     case detectedVirginia
+    case detectedTexas
     case detectedBofaDebitCard
     case warning
 }
@@ -97,6 +98,8 @@ class CameraView: UIView, FrameExtractorDelegate {
                 self.guideView.layer.borderColor = UIColor.red.cgColor
             case .detectedVirginia:
                 self.guideView.layer.borderColor = UIColor.green.cgColor
+            case .detectedTexas:
+                self.guideView.layer.borderColor = UIColor.yellow.cgColor
             case .detectedBofaDebitCard:
                 self.guideView.layer.borderColor = UIColor.orange.cgColor
             case .warning:

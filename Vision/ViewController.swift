@@ -87,6 +87,12 @@ class ViewController: UIViewController, CameraDelegate {
                         } else {
                             cameraView.update(forState: .scanning)
                         }
+                    case .texasFront(let p, let _):
+                        if p > 0.85 {
+                            cameraView.update(forState: .detectedTexas)
+                        } else {
+                            cameraView.update(forState: .scanning)
+                        }
                     default:
                         cameraView.update(forState: .scanning)
                         self.confidenceLabel.text = "---"
